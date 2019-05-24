@@ -1,0 +1,21 @@
+<section class="toolbar">
+  <button class="button-default" (click)="openAddCardGroupModal()">
+    <fa-icon [icon]="faPlus"></fa-icon> Add Card Group
+  </button>
+</section>
+<app-card-group *ngFor="let cardgroup of cardGroups" [cardGroup]="cardgroup"></app-card-group>
+
+
+<modal #addCardGroupModal>
+  <modal-header>
+    New Card Group
+  </modal-header>
+  <modal-content>
+    <input type="text" name="CardGroupName" id="CardGroupName" placeholder="Insert Title" [formControl]="cardTitle"> <br>
+    <input type="date"  name="CardGroupDueDate" id="CardGroupDueDate" [formControl]="cardDate"> <br>
+  </modal-content>
+  <modal-footer>
+    <button (click)="addCardGroup()">Save</button>
+    <button (click)="closeAddCardGroupModal()">Cancel</button>
+  </modal-footer>
+</modal>

@@ -1,0 +1,34 @@
+<div class="card-group-container">
+  <div class="card-group-title-bar text-title" (click)="switchCardGroupVisibility()">
+    <div>{{cardGroup.title}}</div>
+    <div class="dueDate">Due Date: {{cardGroup.dueDate.seconds * 1000 | date:'dd-MM-yyyy'}}</div>
+    <div class="text-center card-view-switch-icon " >
+      <div  >
+       <button class="transparent-bg" [ngClass]="{'rotate-90': getCardGroupVisibility()}" > <fa-icon [icon]="faSortDown"></fa-icon></button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!onlyCardGroupTitleBarVisible">
+    <div class="row button-bar">
+      <button class="button-default " (click)="openAddStepModal()">
+        <fa-icon [icon]="faPlus"></fa-icon> Add Step
+      </button>
+    </div>
+    <div class="step-container">
+      <app-step *ngFor="let step of steps" [step]="step" [cardGroupId]="cardGroup.id"></app-step>
+    </div>
+  </div>
+</div>
+
+<modal #addStepModal>
+  <modal-header>
+    New Step
+  </modal-header>
+  <modal-content>
+    <input type="text" name="titleStep" id="titleStep" placeholder="Insert Title" [formControl]="stepTitle"> <br>
+  </modal-content>
+  <modal-footer>
+    <button (click)="addStep()">Save</button>
+    <button (click)="closeAddStepModal()">Cancel</button>
+  </modal-footer>
+</modal>

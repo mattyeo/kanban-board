@@ -1,0 +1,68 @@
+<div class="card-container"
+  [ngClass]="{'low-card-priority': hasCardLowPriority() , 'medium-card-priority': hasCardMediumPriority(), 'high-card-priority': hasCardHighPriority()}">
+  <div class="card-title">{{uppercaseFirstLetter(card.title)}}</div>
+  <div class="card-description">{{uppercaseFirstLetter(card.description)}}</div>
+  <div class="card-button-section text-right">
+    <button (click)="openEditCardModal()">
+      <fa-icon [icon]="faEdit"></fa-icon>
+    </button>
+    <button (click)="openDeleteCardModal()">
+      <fa-icon [icon]="faTrashAlt"></fa-icon>
+    </button>
+    <button class="move-card-button" (click)="openMoveCardModal()">
+      Move to...
+    </button>
+  </div>
+</div>
+
+<modal #editCardModal>
+  <modal-header>
+    Edit Card
+  </modal-header>
+  <modal-content>
+    <input type="text" name="CardTitle" id="CardTitle" placeholder="Insert Title" [formControl]="cardTitle"
+      value="{{card.title}}"><br>
+    <textarea name="CardDescription" id="CardDescription" placeholder="Insert Description"
+      [formControl]="cardDescription" value="{{card.description}}" #CardDescription> </textarea><br>
+    <input type="radio" name="priority" value="low" checked="'low' == card.priority" [formControl]="cardPriority"> Low
+    Priority <br>
+    <input type="radio" name="priority" value="medium" checked="'medium' == card.priority" [formControl]="cardPriority">
+    Medium
+    Priority <br>
+    <input type="radio" name="priority" value="high" checked="'high' == card.priority" [formControl]="cardPriority">
+    High Priority<br>
+  </modal-content>
+  <modal-footer>
+    <button (click)="updateCard()">Save</button>
+    <button (click)="closeUpdateCardModal()">Cancel</button>
+  </modal-footer>
+</modal>
+
+<modal #deleteCardModal>
+  <modal-header>
+    Delete Confirmation
+  </modal-header>
+  <modal-content>
+    Are you sure that you want to delete this card ?
+  </modal-content>
+  <modal-footer>
+    <button (click)="deleteCard()">Yes</button>
+    <button (click)="closeDeleteCardModal()">No</button>
+  </modal-footer>
+</modal>
+
+<modal #moveCardModal>
+  <modal-header>
+    Select the destination step for the card
+  </modal-header>
+  <modal-content>
+    <select name="newStep" [formControl]="newStep">
+      <option value="" disabled selected>Select the new step</option>
+      <option *ngFor="let step of stepList" value="{{step.id}}">{{step.name}}</option>
+    </select>
+  </modal-content>
+  <modal-footer>
+    <button (click)="saveMoveCard()">Save</button>
+    <button (click)="closeMoveCardModal()">Cancel</button>
+  </modal-footer>
+</modal>

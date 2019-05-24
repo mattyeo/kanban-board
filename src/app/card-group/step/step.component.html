@@ -1,0 +1,49 @@
+<div class="step-single-container">
+  <div class="title-bar text-title">
+    <div class="text-left">{{uppercaseFirstLetter(step.name)}}</div>
+    <div class="text-right">
+      <span class="icon" (click)="openAddCardModal()">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </span>
+      <span (click)="openDeleteStepModal()">
+        <fa-icon [icon]="faTrashAlt"></fa-icon>
+      </span>
+    </div>
+  </div>
+  <div class="step-card-container">
+    <app-card *ngFor="let card of cards" [card]="card" [stepId]="step.id" [cardGroupId]="cardGroupId"></app-card>
+  </div>
+</div>
+
+<modal #addCardModal>
+  <modal-header>
+    Add New Card
+  </modal-header>
+  <modal-content>
+    <input type="text" name="CardTitle" id="CardTitle" placeholder="Insert Title" [formControl]="cardTitle" >
+    <br>
+    <textarea name="CardDescription" id="CardDescription" placeholder="Insert Description" [formControl]="cardDescription"> </textarea><br>
+    <input type="radio" name="priority" value="low" [formControl]="cardPriority" > <label for="low">Low Priority</label>  <br>
+    <input type="radio" name="priority" value="medium" [formControl]="cardPriority"> <label for="medium">Medium
+        Priority </label> <br>
+    <input type="radio" name="priority" value="high" [formControl]="cardPriority"> <label for="high">High
+        Priority </label><br>
+  </modal-content>
+  <modal-footer>
+    <button (click)="createCard()">Save</button>
+    <button (click)="closeAddCardModal()">Cancel</button>
+  </modal-footer>
+</modal>
+
+<modal #deleteStepModal>
+  <modal-header>
+    Delete Confirmation
+  </modal-header>
+  <modal-content>
+    Are you sure that you want to delete this Step ?
+  </modal-content>
+  <modal-footer>
+    <button (click)="deleteStep()">YES</button>
+    <button (click)="closeDeleteStepModal()">No</button>
+  </modal-footer>
+</modal>

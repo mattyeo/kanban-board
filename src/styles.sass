@@ -1,1 +1,264 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700&display=swap')
+
+$primary-color: #4484CE
+$secondary-color: #ECECEC
+$tertiary-color: #F9CF00
+$quaternary-color: #a4bad4
+$dark-blue: #003366
+$dark-orange: #ff8933
+$white: #f1eeee
+$white-light: #fbfbfb
+$grey-light: #b5b4b4
+$light-green: #bdd4a4
+$light-blue: #a4bad4
+$light-red: #ff9898
+$font-family: 'Source Sans Pro', sans-serif
+
+$information-phone: "only screen and (max-width : 768px)"
+
+
+body
+  :background $primary-color
+  :font-family $font-family
+  :color $dark-blue
+
+header
+  :color $white
+  :font-size 32px
+  :text-align center
+  :font-weight bold
+
+h1
+  :font-weight bold
+
+button
+  :font-size 20px
+  :padding 5px 10px 
+  :border-radius 25px
+  :border 0
+  :font-weight bolder
+  :font-family $font-family
+
+input
+  :border 1px solid $grey-light
+    
+input.ng-invalid.ng-touched
+  :border 1px solid red
+
+input[type=date]
+  :height 25px
+  :width 150px
+  :font-family $font-family
+  :margin 3px
+  :padding 0 5px
+
+textarea.ng-invalid.ng-touched
+  :border 1px solid red
+
+.text-title
+  :font-weight bolder
+  :font-size 22px
+
+.icon
+  :margin 0 15px
+
+.button-default
+  color: $white
+  background-color: $dark-orange
+
+.toolbar
+  :margin auto
+  :text-align left
+  :width 90%
+
+
+// MODAL 
+.modal-open.modal 
+  overflow-x: hidden
+  overflow-y: auto
+
+.fade.show
+  opacity: 1
+
+.modal
+  z-index: 1072
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  :background rgba(0,0,0,0.1)
+
+.modal-backdrop
+  :background black
+  :opacity 0.3
+
+.modal-content
+  :margin auto
+  :background $white-light
+  :padding 10px
+  :border-radius 15px
+  :font-size 18px
+  :text-align center
+  
+  .modal-header
+    :font-weight bold
+    :text-align center
+  .modal-footer
+    :font-weight bolder
+    :text-align center
+  button
+    :background transparent
+  input[type=text]
+    :width 250px
+    :height 25px
+    :border-radius 10px
+    :margin 3px
+    :padding 0 5px
+    :font-size 14px
+  textarea
+    :width 250px
+    :height 100px
+    :border 1px solid $grey-light
+    :border-radius 10px
+    :font-size 14px
+    :margin 3px
+    :padding 5px
+
+// CARD GROUP STYLING
+
+.card-group-container 
+  :background $secondary-color
+  :height 100%
+  :width 95%
+  :border-radius 15px
+  :margin 10px auto
+  :font-weight normal
+
+  .button-bar
+    :text-align left
+  
+  ::-webkit-scrollbar
+    :width 0px
+    :background transparent
+  
+  .row
+    width: 90%
+    margin: 0 auto 
+
+.card-group-title-bar
+  :width 95%
+  :display grid
+  :grid-template-columns 70% 25% 5%
+  :margin 5px auto 0
+  :padding 10px
+  .dueDate
+    :text-align right
+
+.card-view-switch-icon
+  :top 0
+
+// STEP STYLING 
+
+.step-container
+  :width 95%
+  :margin 10px auto
+  :overflow auto
+  :white-space nowrap
+
+.step-single-container
+  :height 100%
+  :width 250px
+  :display inline-block
+  :vertical-align top
+  :white-space normal
+  :margin 0px 10px
+  :background $white-light
+  :border-radius 15px
+
+  .title-bar
+    :display grid
+    :grid-template-columns 70% 30%
+    :padding 10px
+  
+  .title-right
+    :padding 0 5px
+  
+  button
+    :background transparent
+
+  .text-title
+    :font-size 20px
+    :margin 10px 0 
+  
+  .step-card-container
+    :min-height 415px
+    :max-height 415px
+    :overflow-y scroll
+
+// CARD STYLING 
+
+.card-container
+  :padding 15px
+  :margin 10px
+  :border-radius 10px
+  
+  button
+    :font-size 18px
+    :color $white-light
+    :border-radius 10px
+    :background transparent
+
+.card-title
+  :font-size 18px
+  :font-weight bolder
+  :margin-bottom 5px
+
+.card-descrioption
+  :font-size 16px
+  :margin-bottom 5px
+
+.low-card-priority
+  :background-color $light-green
+
+.medium-card-priority
+  :background-color $light-blue
+
+.high-card-priority
+  :background-color $light-red
+
+.move-card-button
+  :font-weight 500
+
+// UTILITY
+.transparent-bg
+  :background transparent
+
+.text-left
+  :text-align left
+
+.text-center
+  :text-align center
+
+.text-right
+  :text-align right
+
+.rotate-90
+  :transform rotate(-90deg)
+
+
+@media #{$information-phone} 
+  .card-group-title-bar
+    :grid-template-columns 100%
+    :text-align center
+    .dueDate
+      :text-align center
+    
+  .card-group-container 
+    .button-bar
+      :text-align center
+  
+  .toolbar
+    :text-align center
+  
